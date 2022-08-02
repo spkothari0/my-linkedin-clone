@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Header from './components/Header';
 
 function App() {
@@ -8,13 +7,15 @@ function App() {
       {/* {Header} */}
       <Header />
 
-      {/* AppBody */}
-      {
-        // Sidebar to left
-        // Feeds iniddle
-        // Widges to right
-      }
 
+      <div className="app_body">
+        {
+          // Sidebar to left
+          // Feeds iniddle
+          // Widges to right
+        }
+
+      </div>
 
     </div>
   );
