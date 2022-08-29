@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import './App.css'
+import Feed from './components/Feed';
 function App() {
   return (
     <div className="app">
@@ -10,12 +11,12 @@ function App() {
 
 
       <div className="app_body">
-        {
-          <Sidebar name="Shreyas Kothari" description="I am software Engineer" /> // Sidebar to left: ;
 
-          // Feeds iniddle
-          // Widges to right
-        }
+        <Sidebar name="Shreyas Kothari" description="I am software Engineer" /> {/* Sidebar to left: ; */}
+        <Feed />  {/* // Feeds iniddle */}
+
+        {/* // Widges to right */}
+
 
       </div>
 
