@@ -1,5 +1,5 @@
 import React from 'react';
-import './Sidebar.css';
+import './stylesheets/Sidebar.css';
 import { Avatar } from '@mui/material'
 import { cyan } from '@mui/material/colors';
 import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';

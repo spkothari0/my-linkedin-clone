@@ -1,8 +1,7 @@
-import { Icon } from '@mui/material'
 import React from 'react'
-import './InputOption.css'
+import './stylesheets/InputOption.css'
 
-function InputOption({ name, Icon, color }) {
+function InputOption({ name, Icon, color = "gray" }) {
   return (
     <div className='inputOption'>
       {Icon && <Icon style={{ color: color }} className='inputOption__icon' />}

@@ -1,21 +1,52 @@
-import React from 'react';
-import './Feed.css';
+import React, { useEffect, useState } from 'react';
+import './stylesheets/Feed.css';
 import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
 import ImageIcon from '@mui/icons-material/Image';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import EventIcon from '@mui/icons-material/Event';
 import ArticleIcon from '@mui/icons-material/Article';
+import Post from './Post';
+import { db } from './firebaseInfo';
+import firebase from 'firebase/compat/app';
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+  const [input, setInput] = useState('');
+
+  const sendPost = (e) => {
+    e.preventDefault();
+
+    db.collection("posts").add({
+      name: "Shreyas Kothari",
+      description: "description",
+      message: input,
+      photoUrl: '',
+      timeStamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    setInput('')
+  }
+
+  useEffect(() => {
+    db.collection("posts").orderBy("timeStamp", "desc").onSnapshot(s => (
+      setPosts(s.docs.map(d => (
+        {
+          id: d.id,
+          data: d.data()
+        }
+      )))
+    ))
+  }, [])
+
+
   return (
     <div className='feed'>
       <div className="feed__inputContainer">
         <div className="feed__input">
           <CreateIcon />
           <form >
-            <input type="text" placeholder='Start a post' />
-            <button type="submit" />
+            <input value={input} onChange={e => setInput(e.target.value)} type="text" placeholder='Start a post' />
+            <button onClick={sendPost} type="submit" />
           </form>
         </div>
         <div className="feed__inputOptions">
@@ -25,6 +56,15 @@ function Feed() {
           <InputOption name={"Write article"} Icon={ArticleIcon} color="#E16745" />
         </div>
       </div>
+
+      {posts.map(({ id, data }) => (
+        <Post key={id}
+          name={data.name}
+          description={data.description}
+          message={data.message}
+          photoUrl={data.photoUrl}
+        />
+      ))}
     </div>
   )
 }
