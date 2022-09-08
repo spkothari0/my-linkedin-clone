@@ -14,7 +14,20 @@ function Login() {
 
   const loginToApp = (e) => {
     e.preventDefault();
-    console.log("inside login");
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userAuth) => {
+        dispatch(login({
+          email: userAuth.user.email,
+          uid: userAuth.user.uid,
+          displayName: userAuth.user.displayName,
+          photoURL: userAuth.user.photoURL
+        }))
+      }
+      )
+      .catch((error) => {
+        alert(error);
+        throw error;
+      });
   }
 
   const register = () => {

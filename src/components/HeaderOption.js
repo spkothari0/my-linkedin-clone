@@ -4,9 +4,9 @@ import { Avatar } from '@mui/material';
 import { cyan } from '@mui/material/colors';
 
 
-function HeaderOption({ title, Icon, avatar }) {
+function HeaderOption({ title, Icon, avatar, onClick }) {
   return (
-    <div className='headerOption'>
+    <div onClick={onClick} className='headerOption'>
       {Icon && <Icon className='headerOption__icon' />}
       {avatar && <Avatar className='headerOption__icon' sx={{ bgcolor: cyan[600] }}>{avatar}</Avatar>}
       {<h3 className='headerOption__title'>{title}</h3>}
