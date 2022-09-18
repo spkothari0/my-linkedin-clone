@@ -22,6 +22,8 @@ useStringUtility.propTypes = {
 export default useStringUtility
 
 function GetInitials(n) {
+  if (n == null)
+    return '';
   let names = n.split(' ');
   let initials = names[0].substring(0, 1).toUpperCase();
 

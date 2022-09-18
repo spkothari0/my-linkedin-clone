@@ -5,7 +5,7 @@ import { cyan } from '@mui/material/colors';
 
 
 function HeaderOption({ title, Icon, avatar, onClick, imageSrc }) {
-  console.log("profile pic in header option", imageSrc);
+  console.log("profile pic in header option", imageSrc, 'Avatar', avatar);
   return (
     <div onClick={onClick} className='headerOption'>
       {Icon && <Icon className='headerOption__icon' />}
