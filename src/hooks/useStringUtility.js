@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 function useStringUtility(initialStr) {
@@ -7,10 +7,6 @@ function useStringUtility(initialStr) {
   const setInitials = () => {
     setStr(p => GetInitials(p))
   }
-
-  // useEffect(() => {
-  //   setStr(p => GetInitials(p))
-  // }, [])
 
   return [str, setInitials];
 }

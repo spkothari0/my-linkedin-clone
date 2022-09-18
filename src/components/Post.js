@@ -7,16 +7,14 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../features/userSlice';
 import useStringUtility from '../hooks/useStringUtility';
 import { useEffect } from 'react';
 import { cyan } from '@mui/material/colors';
+import { forwardRef } from 'react';
 
 
-function Post({ name, description, message, photoUrl }) {
+const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
 
-  const user = useSelector(selectUser);
   const [initials, setInitials] = useStringUtility(name);
 
   useEffect(() => {
@@ -24,7 +22,7 @@ function Post({ name, description, message, photoUrl }) {
   }, [])
 
   return (
-    <div className='post'>
+    <div ref={ref} className='post'>
       <div className="post__header">
         <Avatar src={photoUrl} sx={{ bgcolor: cyan[600] }}>{initials}</Avatar>
         <div className="post__info">
@@ -58,6 +56,6 @@ function Post({ name, description, message, photoUrl }) {
       </div>
     </div>
   )
-}
+})
 
 export default Post
