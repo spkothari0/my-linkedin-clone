@@ -3,8 +3,19 @@ import './stylesheets/Sidebar.css';
 import { Avatar } from '@mui/material'
 import { cyan } from '@mui/material/colors';
 import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
+import useStringUtility from '../hooks/useStringUtility';
+import { useEffect } from 'react';
 
-function Sidebar({ name, description }) {
+function Sidebar() {
+
+  const user = useSelector(selectUser);
+  const [initials, setInitials] = useStringUtility(user.displayName)
+
+  useEffect(() => {
+    setInitials(initials)
+  }, [])
 
   const resentItems = (topic, Icon) => {
     return (
@@ -22,9 +33,9 @@ function Sidebar({ name, description }) {
       {/* <h1>I am sidebar</h1> */}
       <div className="sidebar__top">
         <img src="https://imageio.forbes.com/blogs-images/josephliu/files/2019/06/1-office-1516329_1920-1200x299.jpg?format=jpg&width=960" alt="" />
-        <Avatar className='sidebar__avatar' sx={{ bgcolor: cyan[600] }}>{GetInitials(name)}</Avatar>
-        <h2>{name}</h2>
-        <h4>{description}</h4>
+        <Avatar src={user.photoURL} className='sidebar__avatar' sx={{ bgcolor: cyan[600] }}>{initials}</Avatar>
+        <h2>{user.displayName}</h2>
+        <h4>{user.email}</h4>
       </div>
 
       <div className="sidebar__stats">
@@ -49,18 +60,6 @@ function Sidebar({ name, description }) {
       </div>
     </div>
   )
-
-
-
-  function GetInitials(n) {
-    let names = n.split(' ');
-    let initials = names[0].substring(0, 1).toUpperCase();
-
-    if (names.length > 1) {
-      initials += names[names.length - 1].substring(0, 1).toUpperCase();
-    }
-    return initials;
-  }
 }
 
 export default Sidebar

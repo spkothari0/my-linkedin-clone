@@ -22,6 +22,7 @@ function Login() {
           displayName: userAuth.user.displayName,
           photoURL: userAuth.user.photoURL
         }))
+        console.log(userAuth, 'userAuth in login');
       }
       )
       .catch((error) => {
@@ -49,6 +50,7 @@ function Login() {
               photoURL: profilePic
             }))
           })
+        console.log(userAuth, 'userAuth in register');
       })
       .catch(error => {
         console.log(error)

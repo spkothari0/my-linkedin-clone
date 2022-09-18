@@ -43,7 +43,7 @@ function App() {
         <>
           <Header />
           <div className="app_body">
-            <Sidebar name="Shreyas Kothari" description="I am software Engineer" /> {/* Sidebar to left: ; */}
+            <Sidebar /> {/* Sidebar to left: ; */}
             <Feed />  {/* // Feeds iniddle */}
             {/* // Widges to right */}
           </div>

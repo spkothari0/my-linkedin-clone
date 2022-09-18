@@ -9,8 +9,12 @@ import ArticleIcon from '@mui/icons-material/Article';
 import Post from './Post';
 import { db } from './firebaseInfo';
 import firebase from 'firebase/compat/app';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
 
 function Feed() {
+
+  const user = useSelector(selectUser);
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState('');
 
@@ -18,10 +22,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Shreyas Kothari",
-      description: "description",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: '',
+      photoUrl: user.photoURL ?? null,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp()
     })
     setInput('')
