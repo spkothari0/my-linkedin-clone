@@ -1,0 +1,52 @@
+.widges {
+  position: sticky;
+  top: 80px;
+  flex: 0.2;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  height: fit-content;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.widges__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.widges__header>h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.widges__article {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.widges__article:hover {
+  background-color: whitesmoke;
+  /* color: #378FE9; */
+}
+
+.widges__articleLeft {
+  color: #0177B7;
+  margin-right: 5px;
+}
+
+.widges__articleRight {
+  flex: 1;
+}
+
+.widges__articleRight>h4 {
+  font-size: 14px;
+}
+
+.widges__articleRight>p {
+  font-size: 12px;
+  color: gray;
+}

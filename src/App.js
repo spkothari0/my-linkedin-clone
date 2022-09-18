@@ -7,6 +7,7 @@ import { login, logout, selectUser } from './features/userSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import Login from './components/Login';
 import { auth } from './components/firebaseInfo';
+import Widges from './components/Widges';
 
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
           <div className="app_body">
             <Sidebar /> {/* Sidebar to left: ; */}
             <Feed />  {/* // Feeds iniddle */}
-            {/* // Widges to right */}
+            <Widges />{/* // Widges to right */}
           </div>
         </>
       )}
